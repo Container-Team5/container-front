@@ -1,0 +1,16 @@
+.login {
+    padding-top : 100px;
+    align-content: center;
+    text-align : center;
+}
+
+
+
+.btn1 {
+    background-color: #1076ff;
+    color : white;
+    height : 40px;
+    width : 200px;
+    border:none;
+    border-radius:10px;
+}
