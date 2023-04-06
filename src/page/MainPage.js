@@ -1,43 +1,40 @@
-import {Anchor, Layout} from "antd";
-import Sider from "antd/es/layout/Sider";
-import {Content} from "antd/es/layout/layout";
+import {Layout} from "antd";
+import Navigation from "../component/Navigation";
+import Message from "../component/Message";
+import { Routes, Route} from "react-router-dom";
+import DataManage from "./manager/DataManage";
 
-const contentStyle = {
-    textAlign: 'center',
-    minHeight: 120,
-    lineHeight: '120px',
+const {Header, Footer} = Layout;
+
+const headerStyle = {
+    textAlign: 'right',
     color: '#fff',
+    paddingInline: 50,
     backgroundColor: '#fff',
 };
-const siderStyle = {
+
+const footerStyle = {
     textAlign: 'center',
-    lineHeight: '120px',
-    color: '#fff',
+    color: '#000',
     backgroundColor: '#fff',
 };
 
 const MainPage = (props) => {
     return (
-        <Layout>
-            <Sider style={siderStyle}>Sider</Sider>
-            <Content style={contentStyle}>
-                <Anchor
-                    direction="horizontal"
-                    items={[
-                        {
-                            key: 'container',
-                            href: '#container',
-                            title: '컨테이너 관리',
-                        },
-                        {
-                            key: 'pallete',
-                            href: '#pallete',
-                            title: '팔레트 관리',
-                        },
+        <Layout style={{height: '100vh'}}>
+            <Header style={headerStyle}>
+                <Navigation/>
+            </Header>
 
-                    ]}
-                />
-            </Content>
+            <Layout>
+                <Routes>
+                    <Route path="/" element={<DataManage />} />
+                </Routes>
+            </Layout>
+
+            <Footer style={footerStyle}>
+                <Message/>
+            </Footer>
         </Layout>
     )
 }
