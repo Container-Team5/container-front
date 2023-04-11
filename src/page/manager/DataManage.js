@@ -35,9 +35,9 @@ const DataManage = (props) => {
 
 const ContainerManage = (props) => {
     const dataSource = [
-        {id: 'Mike', width: 32, depth: 10, height: 100, weight: 32000},
-        {id: 'Mike', width: 32, depth: 10, height: 100, weight: 32000},
-        {id: 'Mike', width: 32, depth: 10, height: 100, weight: 32000},
+        {id: 'Mike', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 40000, deadline: '2023-04-28 17:22:21', },
+        {id: 'Mike', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 40000, deadline: '2023-04-28 17:22:21',},
+        {id: 'Mike', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 40000, deadline: '2023-04-28 17:22:21',},
     ];
 
     const columns = [
@@ -45,7 +45,10 @@ const ContainerManage = (props) => {
         {title: '가로(m)', dataIndex: 'width', key: 'width',},
         {title: '세로(m)', dataIndex: 'depth', key: 'depth',},
         {title: '높이(m)', dataIndex: 'height', key: 'height',},
-        {title: '무게(T)', dataIndex: 'weight', key: 'weight',},
+        {title: '부피(m^3)', dataIndex: 'volume', key: 'volume',},
+        {title: '무게(kg)', dataIndex: 'weight', key: 'weight',},
+        {title: '무게제한(kg)', dataIndex: 'weightlimit', key: 'weightlimit',},
+        {title: '출고마감시간', dataIndex: 'deadline', key: 'deadline',},
     ];
     return (
         <div>
@@ -56,9 +59,9 @@ const ContainerManage = (props) => {
 
 const PalleteManage = (props) => {
     const dataSource = [
-        {id: 'Mike', name:'맥북프로', count: 100,width: 32, depth: 10, height: 100, volume: 32000},
-        {id: 'Mike', name:'맥북프로', count: 100,width: 32, depth: 10, height: 100, volume: 32000},
-        {id: 'Mike', name:'맥북프로', count: 100,width: 32, depth: 10, height: 100, volume: 32000},
+        {id: 'Mike', name:'맥북프로', count: 100,width: 32, depth: 10, height: 100, volume: 32000, weight: 2000,},
+        {id: 'Mike', name:'맥북프로', count: 100,width: 32, depth: 10, height: 100, volume: 32000, weight: 2000,},
+        {id: 'Mike', name:'맥북프로', count: 100,width: 32, depth: 10, height: 100, volume: 32000, weight: 2000,},
     ];
 
     const columns = [
@@ -69,6 +72,7 @@ const PalleteManage = (props) => {
         {title: '세로(m)', dataIndex: 'depth', key: 'depth',},
         {title: '높이(m)', dataIndex: 'height', key: 'height',},
         {title: '부피(m^3)', dataIndex: 'volume', key: 'volume',},
+        {title: '무게(kg)', dataIndex: 'weight', key: 'weight',},
     ];
     return (
         <div>

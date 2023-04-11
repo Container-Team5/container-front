@@ -4,8 +4,6 @@
     text-align : center;
 }
 
-
-
 .btn1 {
     background-color: #1076ff;
     color : white;
@@ -13,4 +11,13 @@
     width : 200px;
     border:none;
     border-radius:10px;
+}
+
+.text1 {
+    font-size: 50px;
+}
+
+.text2 {
+    font-size: 30px;
+    color: blue;
 }

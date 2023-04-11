@@ -1,10 +1,10 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import LoginPage from "./page/LoginPage"
+import LoginPage from "./page/login/LoginPage"
 import './App.css';
 import MainPage from "./page/MainPage";
-import RegisterPage from "./page/RegisterPage";
-import LoginPage2 from "./page/LoginPage2"
+import RegisterPage from "./page/login/RegisterPage";
+import LoginPage2 from "./page/login/LoginPage2"
 
 function App() {
     return (

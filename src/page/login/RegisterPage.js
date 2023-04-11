@@ -1,6 +1,6 @@
 import {Form,Input} from 'antd';
 import React from 'react';
-import styles from "../component/RegisterPage.module.css";
+import styles from "../../component/RegisterPage.module.css";
 
 const RegisterPage = (props) => {
     const [form] = Form.useForm();

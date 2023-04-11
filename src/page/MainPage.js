@@ -8,7 +8,7 @@ const {Header, Footer} = Layout;
 
 const headerStyle = {
     textAlign: 'right',
-    color: '#fff',
+    color: '#000',
     paddingInline: 50,
     backgroundColor: '#fff',
 };
