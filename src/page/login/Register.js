@@ -1,5 +1,5 @@
 import {Content} from "antd/es/layout/layout";
-import styles from "../component/RegisterPage.module.css";
+import styles from "../../component/RegisterPage.module.css";
 import {useNavigate} from "react-router-dom";
 import {Form,Input,Radio,Select,Button} from "antd";
 import React, {useState} from 'react';

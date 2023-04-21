@@ -1,8 +1,8 @@
 import {Content} from "antd/es/layout/layout";
-import styles from "../component/LoginPage.module.css";
+import styles from "../../component/LoginPage.module.css";
 import {useNavigate} from "react-router-dom";
-import user_login from "../user-login.png";
-import user_register from "../user-register.png";
+import user_login from "../../user-login.png";
+import user_register from "../../user-register.png";
 
 
 const LoginPage = (props) => {
