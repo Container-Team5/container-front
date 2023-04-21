@@ -22,60 +22,43 @@ span {
 span:hover {
     color: black;
 }
+.font_style {
+    font-size:20px;
+
+}
 
 
 
 
 .page_middle {
-    height:600px;
+    height:1100px;
     display:flex;
     justify-content: center;
     margin-top:50px;
 }
-.middle_login {
-    background:white;
-    width:400px;
-    height:500px;
-    border :1px solid #909090;
-    border-radius : 20px;
-    float:left;
-    margin-right:100px;
-
-}
 .middle_register {
     background:white;
-    width:400px;
-    height:500px;
-    border :1px solid #909090;
-    border-radius : 20px;
+    width:900px;
+    height:1000px;
+    border:1px solid #909090;
+    border-radius:20px;
     float:left;
+    margin-right:100px;
+    margin-left:100px;
+    padding-left:20px;
+    padding-top:20px;
 }
-img {
-    padding-top : 100px;
-    padding-left: 135px;
-}
-h2 {
-    margin-top : 90px;
-    text-align:center;
-}
-.middle_button {
-    margin-top:10px;
-    margin-left:50px;
-    height:50px;
-    width:300px;
-    border:none;
-    background:black;
-    color:white;
-    font-size:20px;
-    border-radius : 10px;
-}
-.middle_button:hover {
-    border : 2px solid black;
-    background : white;
-    color : black;
-}
+.middle_register_button {
+    float:left;
+    margin-left:320px;
 
-
+}
+.middle_register_button_1 {
+    text-align: center;
+}
+.middle_register_button_2 {
+    text-align: center;
+}
 
 
 .page_footer {

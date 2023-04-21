@@ -1,7 +1,29 @@
 import {Anchor, Layout, Table, Tabs} from "antd";
 import Sider from "antd/es/layout/Sider";
 import {Content} from "antd/es/layout/layout";
+import axios from "axios";
+import {useEffect, useState} from "react";
+import { AudioOutlined } from '@ant-design/icons';
+import { Input, Space, Button } from 'antd';
+import './DataManage.css';
 
+
+const { Search } = Input;
+const suffix = (
+    <AudioOutlined
+        style={{
+            fontSize: 16,
+            color: '#1890ff',
+        }}
+    />
+);
+const onSearch = (value) => {
+    console.log(value)
+};
+const onClick = (value) => {
+    console.log(value)
+    window.open("/", "a", "width=400, height=300, left=100, top=50"); // 팝업 띄우기
+};
 const contentStyle = {
     textAlign: 'center',
     minHeight: 120,
@@ -25,41 +47,59 @@ const DataManage = (props) => {
     ];
     return (
         <Layout>
-            <Sider style={siderStyle}>Sider</Sider>
+            <Sider style={siderStyle}>
+                <Search className="search" placeholder="input search text" onSearch={onSearch} enterButton />
+                <Button className="button" type="primary" onClick={onClick}>UPLOAD</Button>
+            </Sider>
             <Content style={contentStyle}>
                 <Tabs defaultActiveKey="container" items={items} onChange={onChange}/>
+
             </Content>
         </Layout>
     )
 }
 
 const ContainerManage = (props) => {
-    const dataSource = [
-        {id: 'Mike', width: 32, depth: 10, height: 100, weight: 32000},
-        {id: 'Mike', width: 32, depth: 10, height: 100, weight: 32000},
-        {id: 'Mike', width: 32, depth: 10, height: 100, weight: 32000},
-    ];
+    const [containers, setContainers] = useState([
+
+    ]);
+
+    useEffect(()=>{
+        getContainerData()
+    },[])
 
     const columns = [
         {title: '컨테이너ID', dataIndex: 'id', key: 'id',},
         {title: '가로(m)', dataIndex: 'width', key: 'width',},
         {title: '세로(m)', dataIndex: 'depth', key: 'depth',},
         {title: '높이(m)', dataIndex: 'height', key: 'height',},
-        {title: '무게(T)', dataIndex: 'weight', key: 'weight',},
+        {title: '부피(m^3)', dataIndex: 'volume', key: 'volume',},
+        {title: '무게(kg)', dataIndex: 'weight', key: 'weight',},
+        {title: '무게제한(kg)', dataIndex: 'weightlimit', key: 'weightlimit',},
+        {title: '출고마감시간', dataIndex: 'deadline', key: 'deadline',},
     ];
+
+
+    const getContainerData = async ()=>{
+        let result = (await axios.get("http://localhost:8080/api/container")).data
+        setContainers(result)
+    }
+
     return (
         <div>
-            <Table dataSource={dataSource} columns={columns} pagination={false}/>
+            <Table dataSource={containers} columns={columns} pagination={false}/>
         </div>
     )
 }
 
 const PalleteManage = (props) => {
-    const dataSource = [
-        {id: 'Mike', name:'맥북프로', count: 100,width: 32, depth: 10, height: 100, volume: 32000},
-        {id: 'Mike', name:'맥북프로', count: 100,width: 32, depth: 10, height: 100, volume: 32000},
-        {id: 'Mike', name:'맥북프로', count: 100,width: 32, depth: 10, height: 100, volume: 32000},
-    ];
+    const [pallete, setPallete] = useState([
+
+    ]);
+
+    useEffect(()=>{
+        getPalleteData()
+    },[])
 
     const columns = [
         {title: '팔레트ID', dataIndex: 'id', key: 'id',},
@@ -69,10 +109,17 @@ const PalleteManage = (props) => {
         {title: '세로(m)', dataIndex: 'depth', key: 'depth',},
         {title: '높이(m)', dataIndex: 'height', key: 'height',},
         {title: '부피(m^3)', dataIndex: 'volume', key: 'volume',},
+        {title: '무게(kg)', dataIndex: 'weight', key: 'weight',},
     ];
+
+    const getPalleteData = async ()=>{
+        let result = (await axios.get("http://localhost:8080/api/palette")).data
+        setPallete(result)
+    }
+
     return (
         <div>
-            <Table dataSource={dataSource} columns={columns} pagination={false}/>
+            <Table dataSource={pallete} columns={columns} pagination={false}/>
         </div>
     )
 }

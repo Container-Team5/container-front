@@ -1,16 +1,29 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import LoginPage from "./page/LoginPage"
 import './App.css';
-import MainPage from "./page/MainPage";
 
+import LoginPage from "./page/login/LoginPage"
+import RegisterPage from "./page/login/Register";
+import LoginPage2 from "./page/login/LoginPage2"
+
+
+import DataManage from "./page/manager/DataManage";
+import OrderManage from "./page/manager/OrderManage";
+import MainPageLayout from "./page/MainPageLayout"
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<MainPage/>}/>
-                <Route path="/login" element={<LoginPage/>}/>
+                <Route path="/account" element={<LoginPage/>}/>
+                <Route path="/account/Login" element={<LoginPage2/>}/>
+
+                <Route path="/account/Register" element={<RegisterPage/>}/>
+
+                <Route exact path="/" element={<MainPageLayout/>}>
+                    <Route path="/data-manage" element={<DataManage/>}/>
+                    <Route path="/order-manage" element={<OrderManage/>}/>
+                </Route>
             </Routes>
         </BrowserRouter>
     );

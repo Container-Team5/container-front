@@ -1,6 +1,7 @@
 import {Layout} from "antd";
 import Navigation from "../component/Navigation";
 import Message from "../component/Message";
+import { Outlet } from "react-router"
 import { Routes, Route} from "react-router-dom";
 import DataManage from "./manager/DataManage";
 
@@ -8,7 +9,7 @@ const {Header, Footer} = Layout;
 
 const headerStyle = {
     textAlign: 'right',
-    color: '#fff',
+    color: '#000',
     paddingInline: 50,
     backgroundColor: '#fff',
 };
@@ -19,7 +20,7 @@ const footerStyle = {
     backgroundColor: '#fff',
 };
 
-const MainPage = (props) => {
+const MainPageLayout = (props) => {
     return (
         <Layout style={{height: '100vh'}}>
             <Header style={headerStyle}>
@@ -27,9 +28,7 @@ const MainPage = (props) => {
             </Header>
 
             <Layout>
-                <Routes>
-                    <Route path="/" element={<DataManage />} />
-                </Routes>
+                <Outlet />
             </Layout>
 
             <Footer style={footerStyle}>
@@ -38,4 +37,4 @@ const MainPage = (props) => {
         </Layout>
     )
 }
-export default MainPage;
+export default MainPageLayout;
