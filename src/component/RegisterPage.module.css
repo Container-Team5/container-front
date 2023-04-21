@@ -1,7 +1,68 @@
-.user_register{
+.page_wrapper {
+    background: #ececec;
+}
+
+.page_header {
+    height:75px;
+    padding:1rem;
+    color:white;
+    background: #7F7FD5;
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+span {
+    font-size:18px;
+    margin-right:25px;
+
+}
+span:hover {
+    color: black;
+}
+.font_style {
+    font-size:20px;
 
 }
 
-.admin_register{
 
+
+
+.page_middle {
+    height:1100px;
+    display:flex;
+    justify-content: center;
+    margin-top:50px;
+}
+.middle_register {
+    background:white;
+    width:900px;
+    height:1000px;
+    border:1px solid #909090;
+    border-radius:20px;
+    float:left;
+    margin-right:100px;
+    margin-left:100px;
+    padding-left:20px;
+    padding-top:20px;
+}
+.middle_register_button {
+    float:left;
+    margin-left:320px;
+
+}
+.middle_register_button_1 {
+    text-align: center;
+}
+.middle_register_button_2 {
+    text-align: center;
+}
+
+
+.page_footer {
+    height:190px;
+    background: #b0b0b0;
+    text-align : center;
 }
