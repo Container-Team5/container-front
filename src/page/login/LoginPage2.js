@@ -4,6 +4,7 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import {useNavigate} from "react-router-dom";
 import {Form,Input,Checkbox,Button,Radio} from "antd";
 import React, {useState} from 'react';
+import LoginPageHeader from "../../component/LoginPageHeader";
 
 
 
@@ -20,19 +21,14 @@ const LoginPage2 = (props) => {
         navigate('../account');
     }
 
-
+    const goMainPage = () => {
+        navigate('../');
+    }
 
     return (
         <Content>
             <div className={styles.page_wrapper}>
-                <header className={styles.page_header}>
-                    <h1 onClick={goAccountPage}>Everything Of Container</h1>
-                    <nav>
-                        <span onClick={goLoginPage}>로그인</span>
-                        <span> | </span>
-                        <span onClick={goRegisterPage}>회원가입</span>
-                    </nav>
-                </header>
+                <LoginPageHeader/>
 
                 <div className={styles.page_middle}>
                     <div className={styles.middle_login}>

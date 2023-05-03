@@ -4,12 +4,14 @@ import './App.css';
 
 import LoginPage from "./page/login/LoginPage"
 import RegisterPage from "./page/login/Register";
-import LoginPage2 from "./page/login/LoginPage2"
+import LoginPage2 from "./page/login/LoginPage2";
 
 
 import DataManage from "./page/manager/DataManage";
 import OrderManage from "./page/manager/OrderManage";
-import MainPageLayout from "./page/MainPageLayout"
+import MainPageLayout from "./page/MainPageLayout";
+import Upload from "./page/manager/Upload";
+import LoadResultManage from "./page/manager/LoadResultManage";
 
 function App() {
     return (
@@ -23,7 +25,9 @@ function App() {
                 <Route exact path="/" element={<MainPageLayout/>}>
                     <Route path="/data-manage" element={<DataManage/>}/>
                     <Route path="/order-manage" element={<OrderManage/>}/>
+                    <Route path="/load-result-manage" element={<LoadResultManage/>}/>
                 </Route>
+                <Route path="/upload" element={<Upload />}/>
             </Routes>
         </BrowserRouter>
     );

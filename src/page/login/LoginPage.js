@@ -3,7 +3,7 @@ import styles from "../../component/LoginPage.module.css";
 import {useNavigate} from "react-router-dom";
 import user_login from "../../user-login.png";
 import user_register from "../../user-register.png";
-
+import LoginPageHeader from "../../component/LoginPageHeader";
 
 const LoginPage = (props) => {
     const navigate = useNavigate();
@@ -17,19 +17,14 @@ const LoginPage = (props) => {
     const goAccountPage = () => {
         navigate('../account');
     }
+    const goMainPage = () => {
+        navigate('../');
+    }
 
     return (
         <Content>
             <div className={styles.page_wrapper}>
-                <header className={styles.page_header}>
-                    <h1 onClick={goAccountPage}>Everything Of Container</h1>
-                    <nav>
-                        <span onClick={goLoginPage}>로그인</span>
-                        <span> | </span>
-                        <span onClick={goRegisterPage}>회원가입</span>
-                    </nav>
-                </header>
-
+                <LoginPageHeader/>
                 <div className={styles.page_middle}>
                     <div className={styles.middle_login}>
                         <img src={user_login}/>

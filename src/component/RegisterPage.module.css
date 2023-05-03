@@ -16,12 +16,10 @@
 }
 span {
     font-size:18px;
-    margin-right:25px;
+    /*margin-right:25px;*/
 
 }
-span:hover {
-    color: black;
-}
+
 .font_style {
     font-size:20px;
 

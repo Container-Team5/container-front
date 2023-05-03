@@ -16,14 +16,9 @@
 }
 span {
     font-size:18px;
-    margin-right:25px;
+    /*margin-right:25px;*/
 
 }
-span:hover {
-    color: black;
-}
-
-
 
 
 .page_middle {
@@ -75,11 +70,9 @@ h2 {
     color : black;
 }
 
-
-
-
 .page_footer {
     height:190px;
     background: #b0b0b0;
     text-align : center;
 }
+

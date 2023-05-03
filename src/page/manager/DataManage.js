@@ -22,7 +22,7 @@ const onSearch = (value) => {
 };
 const onClick = (value) => {
     console.log(value)
-    window.open("/", "a", "width=400, height=300, left=100, top=50"); // 팝업 띄우기
+    window.open("/upload", "a", "width=700, height=400, left=100, top=50"); // 팝업 띄우기
 };
 const contentStyle = {
     textAlign: 'center',
@@ -53,7 +53,6 @@ const DataManage = (props) => {
             </Sider>
             <Content style={contentStyle}>
                 <Tabs defaultActiveKey="container" items={items} onChange={onChange}/>
-
             </Content>
         </Layout>
     )
@@ -61,7 +60,16 @@ const DataManage = (props) => {
 
 const ContainerManage = (props) => {
     const [containers, setContainers] = useState([
-
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
     ]);
 
     useEffect(()=>{
@@ -94,7 +102,16 @@ const ContainerManage = (props) => {
 
 const PalleteManage = (props) => {
     const [pallete, setPallete] = useState([
-
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width:32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width:32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
     ]);
 
     useEffect(()=>{
@@ -110,6 +127,7 @@ const PalleteManage = (props) => {
         {title: '높이(m)', dataIndex: 'height', key: 'height',},
         {title: '부피(m^3)', dataIndex: 'volume', key: 'volume',},
         {title: '무게(kg)', dataIndex: 'weight', key: 'weight',},
+        {title: '출고마감시간', dataIndex: 'deadline', key: 'deadline',},
     ];
 
     const getPalleteData = async ()=>{

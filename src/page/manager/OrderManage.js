@@ -1,8 +1,9 @@
-import {Anchor, Layout, Table, Tabs} from "antd";
+import {Anchor, Button, Layout, Table, Tabs} from "antd";
 import Sider from "antd/es/layout/Sider";
 import {Content} from "antd/es/layout/layout";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import Search from "antd/es/input/Search";
 
 const contentStyle = {
     textAlign: 'center',
@@ -17,12 +18,24 @@ const siderStyle = {
     backgroundColor: '#fff',
 };
 
+const onSearch = (value) => {
+    console.log(value)
+};
+
+
 const OrderManage = (props) => {
     const [orders, setOrders] = useState([
         {index: '1', orderNum: 2023, name: '삼성갤럭시Z플립4', count: 5, width: 32, depth: 10, height: 100, volume:1000, weight: 32000, },
         {index: '1', orderNum: 2023, name: '삼성갤럭시Z플립4', count: 5, width: 32, depth: 10, height: 100, volume:1000, weight: 32000, },
         {index: '1', orderNum: 2023, name: '삼성갤럭시Z플립4', count: 5, width: 32, depth: 10, height: 100, volume:1000, weight: 32000, },
+        {index: '1', orderNum: 2023, name: '삼성갤럭시Z플립4', count: 5, width: 32, depth: 10, height: 100, volume:1000, weight: 32000, },
+        {index: '1', orderNum: 2023, name: '삼성갤럭시Z플립4', count: 5, width: 32, depth: 10, height: 100, volume:1000, weight: 32000, },
+        {index: '1', orderNum: 2023, name: '삼성갤럭시Z플립4', count: 5, width: 32, depth: 10, height: 100, volume:1000, weight: 32000, },
+        {index: '1', orderNum: 2023, name: '삼성갤럭시Z플립4', count: 5, width: 32, depth: 10, height: 100, volume:1000, weight: 32000, },
+        {index: '1', orderNum: 2023, name: '삼성갤럭시Z플립4', count: 5, width: 32, depth: 10, height: 100, volume:1000, weight: 32000, },
+        {index: '1', orderNum: 2023, name: '삼성갤럭시Z플립4', count: 5, width: 32, depth: 10, height: 100, volume:1000, weight: 32000, },
     ]);
+
 
     useEffect(()=>{
         getOrderData()
@@ -47,9 +60,14 @@ const OrderManage = (props) => {
     }
 
     return (
-        <div>
-            <Table dataSource={orders} columns={columns} pagination={false}/>
-        </div>
+        <Layout>
+            <Sider style={siderStyle}>
+                <Search className="search" placeholder="input search text" onSearch={onSearch} enterButton />
+            </Sider>
+            <Content style={contentStyle}>
+                <Table dataSource={orders} columns={columns} pagination={false}/>
+            </Content>
+        </Layout>
     )
 }
 export default OrderManage;
