@@ -31,6 +31,7 @@ const Navigation = (props) => {
         textStyle: 'bold',
     }
 
+
     return (
         <div>
             <nav style={navStyle}>

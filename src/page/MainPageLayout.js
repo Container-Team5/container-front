@@ -15,6 +15,7 @@ const headerStyle = {
     backgroundColor: '#abcdef',
 };
 
+
 // const footerStyle = {
 //     textAlign: 'center',
 //     color: '#000',
@@ -27,10 +28,12 @@ const MainPageLayout = (props) => {
     const goMainPage = () => {
         navigate('./');
     }
+
+
     return (
         <Layout style={{height: '100vh'}}>
             <Header style={headerStyle}>
-                <h1 onClick={goMainPage}>Everything of Container</h1>
+                <h1 onClick={goMainPage} style={{cursor:'pointer'}}>Everything of Container</h1>
             </Header>
             <Navigation/>
             <Layout>
