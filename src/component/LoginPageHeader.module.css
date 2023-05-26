@@ -1,3 +1,6 @@
+.h1:hover {
+    cursor : pointer;
+}
 
 .login_menu_tab {
     margin-left : 25px;
@@ -6,6 +9,7 @@
 
 .login_menu:hover {
     color : black;
+    cursor : pointer;
 }
 
 .login_navigation {

@@ -45,6 +45,9 @@ const DataManage = (props) => {
         {key: 'container', label: `컨테이너 관리`, children: <ContainerManage/>,},
         {key: 'pallete', label: `팔레트 관리`, children: <PalleteManage/>,}
     ];
+
+
+
     return (
         <Layout>
             <Sider style={siderStyle}>
@@ -60,16 +63,16 @@ const DataManage = (props) => {
 
 const ContainerManage = (props) => {
     const [containers, setContainers] = useState([
-        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
-        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
-        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
-        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
-        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
-        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
-        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
-        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
-        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
-        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-04-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-03 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-03 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-05 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-05 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-05 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-28 11:00', },
     ]);
 
     useEffect(()=>{
@@ -101,17 +104,20 @@ const ContainerManage = (props) => {
 }
 
 const PalleteManage = (props) => {
+
+
+
     const [pallete, setPallete] = useState([
-        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
-        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
-        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width:32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
-        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
-        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
-        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
-        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
-        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width:32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
-        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
-        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-04-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-03 11:00',},
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-03 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width:32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-03 15:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-05 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width:32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
     ]);
 
     useEffect(()=>{
