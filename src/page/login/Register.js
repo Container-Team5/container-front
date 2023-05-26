@@ -3,13 +3,15 @@ import styles from "../../component/RegisterPage.module.css";
 import {Form,Input,Radio,Select,Button} from "antd";
 import React, {useState} from 'react';
 import LoginPageHeader from "../../component/LoginPageHeader";
+import {useDaumPostcodePopup} from "react-daum-postcode";
+import DaumPostcode from 'react-daum-postcode';
+
 const { Option }= Select;
 
 const Register = (props) => {
-    const script = document.createElement("script");
-    script.src = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
-    script.async = true;
-    document.body.appendChild(script);
+    const scriptUrl = "//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+    const open = useDaumPostcodePopup(scriptUrl);
+
 
     const formItemLayout = {
         labelCol: {
@@ -40,11 +42,62 @@ const Register = (props) => {
         console.log(value);
         window.open("/account/Register/checkDup","form","width=700, height=400, left=410, top=250");
     };
-    const moveAddress = (value) => {
-        console.log(value);
-        window.open("/account/Register/address", "form", "width=700, height=400, left=410, top=250");
 
+
+    const moveAddress = (data) => {
+        let fullAddress = data.address;
+        let extraAddress = '';
+
+        if(data.addressType === 'R') {
+            if(data.bname !== '') {
+                extraAddress += data.bname;
+            }
+            if(data.buildingName !== '') {
+                extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+            }
+            fullAddress += extraAddress!== ''? `(${extraAddress})` : '';
+        }
+        console.log(fullAddress);
+        console.log(data.zonecode);
+        console.log(data);
     };
+    const handleClick= () => {
+        open({onComplete : moveAddress });
+    };
+
+    const checkPassword = (password) => {
+        if (password.length < 8 || password.length > 16) {
+            return false;
+        }
+        if (!/[A-Z]/.test(password)) {
+            return false;
+        }
+        if (!/[a-z]/.test(password)) {
+            return false;
+        }
+        if (!/\d/.test(password)) {
+            return false;
+        }
+        if (!/[!@#$%^&*()_+]/.test(password)) {
+            return false;
+        }
+        return true;
+    }
+    const checkPhone = (phone) => {
+        if (phone.length != 8) {
+            return false;
+        }
+        if(/-/.test(phone)) {
+            return false;
+        }
+        if (/[A-Z]/.test(phone)) {
+            return false;
+        }
+        if (/[a-z]/.test(phone)) {
+            return false;
+        }
+        return true;
+    }
 
     return (
         <Content>
@@ -66,81 +119,69 @@ const Register = (props) => {
                                 <Button className={styles.idCheck} type={"primary"} onClick={checkId}>아이디 중복체크</Button>
                             </Form.Item>
                             <Form.Item name={"password"} label={"비밀번호"} rules={[{required: true, message: 'Please input your Password!'}]} hasFeedback>
-                                <Input.Password name={"password"} placeholder={"비밀번호를 입력하세요."}/>
-                                8~16자 영문 대 소문자,숫자,특수문자를 사용하세요.
+                                <Input.Password name={"password"} placeholder={"비밀번호를 입력하세요."} onChange={checkPassword} />
+                                8~16자 영문,숫자,특수문자를 사용하세요.
                             </Form.Item>
-                            <Form.Item name={"confirm"} label={"비밀번호 확인"} dependencies={["password"]} hasFeedback rules={[
-                                {
-                                    required: true,
-                                    message: 'Please confirm your password!',
-                                },
-                                ({ getFieldValue }) => ({
-                                    validator(_, value) {
-                                        if (getFieldValue("password") === value) {
-                                            return Promise.resolve();
-                                        }
-                                        return Promise.reject(new Error('The two passwords that you entered do not match!'));
-                                    },
-                                }),
+                            <Form.Item name={"confirm"} label={"비밀번호 확인"} dependencies={['password']} hasFeedback rules={[{required: true,message: 'Please confirm your password!'},
+
                             ]}>
                                 <Input.Password name={"confirm"} placeholder={"비밀번호를 재입력하세요."}/>
                             </Form.Item>
                             <Form.Item name={"phone"} label={"연락처"} rules={[{required:true,message: 'Please input your Phone Number!'}]}>
-                                <Input addonBefore={prefixSelector} placeholder={"'-'를 제외한 8자리 번호를 입력하세요."}/>
+                                <Input addonBefore={prefixSelector} placeholder={"'-'를 제외한 8자리 번호를 입력하세요."} onChange={checkPhone}/>
                             </Form.Item>
                         </Form>
-                            <hr/>
-                            <p className={styles.font_style}>관리자 정보 입력</p>
-                            <Form className={styles.register_form} disabled={admin_informDisabled ? true : false} {...formItemLayout}>
-                                <Form.Item name={""} label={"관리자명"} rules={[{required:true,message: 'Please enter your Name!'}]}>
-                                    <Input placeholder={"관리자명을 입력하세요."}/>
-                                </Form.Item>
-                                <Form.Item name={"text"} label={"부서"} rules={[{required:true,message: 'Please enter your Position!'}]}>
-                                    <Input placeholder={"부서명을 입력하세요."}/>
-                                </Form.Item>
-                                <Form.Item name={"text"} label={"직책"} rules={[{required:true,message: 'Please enter your Position!'}]}>
-                                    <Input placeholder={"직책명을 입력하세요."}/>
-                                </Form.Item>
-                            </Form>
-                            <hr/>
-                            <p className={styles.font_style}>사용자 정보 입력</p>
-                            <Form className={styles.register_form} disabled={user_informDisabled? true : false} {...formItemLayout}>
-                                <Form.Item name={""} label={"우편번호"} rules={[{required:true,message: 'Please enter your Address!'}]}>
-                                    <Input placeholder={"'우편번호 검색'을 통해 주소를 입력하세요."}/>
-                                    <Button className={styles.emailCheck} type={"primary"} onClick={moveAddress}>우편번호 검색</Button>
-                                </Form.Item>
-                                {/*<Form layout={"inline"} className={styles.register_form}>*/}
-                                {/*    <Form.Item label={"상세주소"} rules={[{required:true,message: 'Please enter your Address!'}]}></Form.Item>*/}
-                                {/*    <Form.Item><Input /></Form.Item>*/}
-                                {/*    <Form.Item><Input /></Form.Item>*/}
-                                {/*</Form>*/}
-                                <Form.Item name={""} label={"주소"} rules={[{required:true,message:'Please enter Your Address!'}]}>
-                                    <Form layout={"inline"}>
-                                        <Form.Item><Input placeholder={"상세주소"} /></Form.Item>
-                                        <Form.Item><Input placeholder={"참고항목"}/></Form.Item>
-                                    </Form>
-                                </Form.Item>
-                                <Form.Item name={"text"} label={"물류업체명"} rules={[{required:true,message: 'Please enter Company Name!'}]}>
-                                    <Input placeholder={"물류업체명을 입력하세요."}/>
-                                </Form.Item>
-                                <Form.Item name={"text"} label={"대표자"} rules={[{required:true,message: 'Please enter Representative!'}]}>
-                                    <Input placeholder={"대표자명을 입력하세요."}/>
-                                </Form.Item>
-                            </Form>
-                        <Form>
-                            <Form.Item className={styles.middle_register_button}>
-                                <Button className={styles.middle_register_button_1}>이전</Button>
-                                <Button type={"primary"} htmlType={"submit"} className={styles.middle_register_button_2}>가입하기</Button>
+                        <hr/>
+                        <p className={styles.font_style}>관리자 정보 입력</p>
+                        <Form className={styles.register_form} disabled={admin_informDisabled ? true : false} {...formItemLayout}>
+                            <Form.Item name={""} label={"관리자명"} rules={[{required:true,message: 'Please enter your Name!'}]}>
+                                <Input placeholder={"관리자명을 입력하세요."}/>
+                            </Form.Item>
+                            <Form.Item name={"text"} label={"부서"} rules={[{required:true,message: 'Please enter your Position!'}]}>
+                                <Input placeholder={"부서명을 입력하세요."}/>
+                            </Form.Item>
+                            <Form.Item name={"text"} label={"직책"} rules={[{required:true,message: 'Please enter your Position!'}]}>
+                                <Input placeholder={"직책명을 입력하세요."}/>
                             </Form.Item>
                         </Form>
+                        <hr/>
+                        <p className={styles.font_style}>사용자 정보 입력</p>
+                        <Form className={styles.register_form} disabled={user_informDisabled? true : false} {...formItemLayout}>
+                            <Form.Item name={""} label={"우편번호"} rules={[{required:true,message: 'Please enter your Address!'}]}>
+                                <Input placeholder={"'우편번호 검색'을 통해 주소를 입력하세요."}/>
+                                <Button className={styles.emailCheck} type={"primary"} onClick={handleClick}>우편번호 검색</Button>
+                            </Form.Item>
+                            {/*<Form layout={"inline"} className={styles.register_form}>*/}
+                            {/*    <Form.Item label={"상세주소"} rules={[{required:true,message: 'Please enter your Address!'}]}></Form.Item>*/}
+                            {/*    <Form.Item><Input /></Form.Item>*/}
+                            {/*    <Form.Item><Input /></Form.Item>*/}
+                            {/*</Form>*/}
+                            <Form.Item name={""} label={"주소"} rules={[{required:true,message:'Please enter Your Address!'}]}>
+                                <Form layout={"inline"}>
+                                    <Form.Item><Input placeholder={"상세주소"} /></Form.Item>
+                                    <Form.Item><Input placeholder={"참고항목"}/></Form.Item>
+                                </Form>
+                            </Form.Item>
+                            <Form.Item name={"text"} label={"물류업체명"} rules={[{required:true,message: 'Please enter Company Name!'}]}>
+                                <Input placeholder={"물류업체명을 입력하세요."}/>
+                            </Form.Item>
+                            <Form.Item name={"text"} label={"대표자"} rules={[{required:true,message: 'Please enter Representative!'}]}>
+                                <Input placeholder={"대표자명을 입력하세요."}/>
+                            </Form.Item>
+                        </Form>
+                        <Form.Item className={styles.middle_register_button}>
+                            <Button className={styles.middle_register_button_1}>이전</Button>
+                            <Button type={"primary"} className={styles.middle_register_button_2}>가입하기</Button>
+                        </Form.Item>
                     </div>
                 </div>
+
+
                 <footer className={styles.page_footer}>
                     <h3>컨테이너의 모든 것</h3>
                 </footer>
             </div>
         </Content>
-
     )
 }
 

@@ -32,7 +32,7 @@ const LoginPage2 = (props) => {
 
                 <div className={styles.page_middle}>
                     <div className={styles.middle_login}>
-                        <Form className={styles.login_form}>
+                        <Form className={styles.login_form} initialValues={{remember:true}}>
                             <Form.Item>
                                 <Radio.Group >
                                     <Radio.Button value={"Administrator"}>관리자</Radio.Button>
