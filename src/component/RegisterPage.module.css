@@ -50,10 +50,10 @@ span {
 .middle_register_button {
     float:left;
     margin-left:320px;
-
 }
 .middle_register_button_1 {
     text-align: center;
+    margin-right:10px;
 }
 .middle_register_button_2 {
     text-align: center;
@@ -62,9 +62,8 @@ span {
     margin-top:15px;
     width:170px;
 }
-.emailCheck {
-    margin-top:15px;
-    width:150px;
+.address_style {
+    width:250px;
 }
 
 
