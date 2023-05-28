@@ -16,14 +16,8 @@
 }
 span {
     font-size:18px;
-    margin-right:25px;
+    /*margin-right:25px;*/
 }
-span:hover {
-    color: black;
-}
-
-
-
 
 .page_middle {
     height:600px;
@@ -57,11 +51,6 @@ span:hover {
 .login_form_register {
     font-size : 20px;
 }
-
-
-
-
-
 
 .page_footer {
     height:190px;

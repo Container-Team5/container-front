@@ -22,7 +22,7 @@ const onSearch = (value) => {
 };
 const onClick = (value) => {
     console.log(value)
-    window.open("/", "a", "width=400, height=300, left=100, top=50"); // 팝업 띄우기
+    window.open("/upload", "a", "width=700, height=500, left=100, top=50"); // 팝업 띄우기
 };
 const contentStyle = {
     textAlign: 'center',
@@ -38,22 +38,28 @@ const siderStyle = {
 };
 
 const DataManage = (props) => {
+    const [currentTab, setCurrentTab] = useState('container') // state 만들어서 컨테이너에만 update 기능 활성화
     const onChange = (key) => {
+        setCurrentTab(key)
         console.log(key);
     };
     const items = [
         {key: 'container', label: `컨테이너 관리`, children: <ContainerManage/>,},
         {key: 'pallete', label: `팔레트 관리`, children: <PalleteManage/>,}
     ];
+
     return (
         <Layout>
             <Sider style={siderStyle}>
                 <Search className="search" placeholder="input search text" onSearch={onSearch} enterButton />
-                <Button className="button" type="primary" onClick={onClick}>UPLOAD</Button>
+                {
+                    currentTab === 'container'
+                        ? <Button className="button" type="primary" onClick={onClick}>UPLOAD</Button>
+                        : null
+                }
             </Sider>
             <Content style={contentStyle}>
                 <Tabs defaultActiveKey="container" items={items} onChange={onChange}/>
-
             </Content>
         </Layout>
     )
@@ -61,7 +67,16 @@ const DataManage = (props) => {
 
 const ContainerManage = (props) => {
     const [containers, setContainers] = useState([
-
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-03 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-03 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-05 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-05 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-05 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-28 11:00', },
+        {id: '1', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, weightlimit: 50000, deadline: '2023-05-28 11:00', },
     ]);
 
     useEffect(()=>{
@@ -93,8 +108,18 @@ const ContainerManage = (props) => {
 }
 
 const PalleteManage = (props) => {
-    const [pallete, setPallete] = useState([
 
+    const [pallete, setPallete] = useState([
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-03 11:00',},
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-03 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width:32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-03 15:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-05 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width:32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
+        {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-28 11:00', },
     ]);
 
     useEffect(()=>{
@@ -110,6 +135,7 @@ const PalleteManage = (props) => {
         {title: '높이(m)', dataIndex: 'height', key: 'height',},
         {title: '부피(m^3)', dataIndex: 'volume', key: 'volume',},
         {title: '무게(kg)', dataIndex: 'weight', key: 'weight',},
+        {title: '출고마감시간', dataIndex: 'deadline', key: 'deadline',},
     ];
 
     const getPalleteData = async ()=>{
