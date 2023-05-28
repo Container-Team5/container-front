@@ -2,7 +2,7 @@ import {Content} from "antd/es/layout/layout";
 import styles from "../../component/RegisterPage.module.css";
 import {Form,Input,Radio,Select,Button} from "antd";
 import React, {useState,useCallback} from 'react';
-import useInput from '@/hooks/useInput';
+import useInput from './useInput';
 import LoginPageHeader from "../../component/LoginPageHeader";
 import {useDaumPostcodePopup} from "react-daum-postcode";
 
@@ -73,12 +73,12 @@ const Register = (props) => {
     };
 
     const validatePassword = useCallback((_, value) => {
-        const regExp = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-z]{1,50})(?=.*[A-Z]{1,50}).{8,50}$/;
+        const regExp = /(?=.*\d{1,20})(?=.*[~`!@#$%\^&*()-+=]{1,20})(?=.*[a-z]{1,20}||[A-z]{1,20}).{5,20}$/;
         if (!value) {
             return Promise.reject(new Error('비밀번호는 필수 항목입니다.'));
         }
         if (!regExp.test(value)) {
-            return Promise.reject(new Error('비밀번호는 8~50자이며 영문 소문자, 영문 대문자, 숫자, 특수문자를 모두 포함해야 합니다.'));
+            return Promise.reject(new Error('비밀번호는 5~20자이며 영문, 숫자, 특수문자를 모두 포함해야 합니다.'));
         }
         return Promise.resolve();
     }, []);
@@ -121,22 +121,21 @@ const Register = (props) => {
                             </Form.Item>
                             <Form.Item name={"password"} label={"비밀번호"} rules={[{ validator : validatePassword }]}>
                                 <Input.Password placeholder={"비밀번호를 입력하세요."} value={password} onChange={onChangePassword} />
-                                8~16자 영문,숫자,특수문자를 사용하세요.
                             </Form.Item>
                             <Form.Item name="confirm" label="비밀번호 확인" dependencies={['password']} hasFeedback rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please confirm your password!',
+                                {
+                                    required: true,
+                                    message: 'Please confirm your password!',
+                                },
+                                ({ getFieldValue }) => ({
+                                    validator(_, value) {
+                                        if (!value || getFieldValue('password') === value) {
+                                            return Promise.resolve();
+                                        }
+                                        return Promise.reject(new Error('입력한 비밀번호와 일치하지 않습니다.'));
                                     },
-                                    ({ getFieldValue }) => ({
-                                        validator(_, value) {
-                                            if (!value || getFieldValue('password') === value) {
-                                                return Promise.resolve();
-                                            }
-                                            return Promise.reject(new Error('The two passwords that you entered do not match!'));
-                                        },
-                                    }),
-                                ]}
+                                }),
+                            ]}
                             >
                                 <Input.Password placeholder={"비밀번호를 재입력하세요."}/>
                             </Form.Item>

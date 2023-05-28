@@ -14,6 +14,8 @@ import MainPageLayout from "./page/MainPageLayout";
 import Upload from "./page/manager/Upload";
 import LoadResultManage from "./page/manager/LoadResultManage";
 import SetPallet from "./page/manager/SetPallet";
+import MainPageLayoutForUser from "./page/MainPageLayoutForUser";
+import GoodsRegister from "./page/user/GoodsRegister";
 
 function App() {
     return (
@@ -28,6 +30,10 @@ function App() {
                     <Route path="/order-manage" element={<OrderManage/>}/>
                     <Route path="/load-result-manage" element={<LoadResultManage/>}/>
                 </Route>
+                <Route exact path="/user" element={<MainPageLayoutForUser/>}>
+                    <Route path="/user/goods-register" element={<GoodsRegister/>}/>
+                </Route>
+                <Route path="/SetPallet" element={<SetPallet/>}/>
                 <Route path="/SetPallet" element={<SetPallet/>}/>
                 <Route path="/upload" element={<Upload />}/>
                 <Route path="/account/Register/address" element={<FindAddress />}/>

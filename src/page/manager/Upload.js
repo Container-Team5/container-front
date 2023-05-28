@@ -1,46 +1,15 @@
 import React, { useState } from 'react';
 import {
     Button,
-    Cascader,
     DatePicker,
     Form,
-    Input,
     InputNumber,
-    Radio,
-    Select,
-    Switch,
-    TreeSelect,
+
 } from 'antd';
 import styles from "../manager/DataManage.css";
+import dayjs from "dayjs";
 
 const Upload = () => {
-
-    /* FORM 템플릿 코드
-    <Form.Item label="Select">
-        <Select>
-            <Select.Option value="demo">Demo</Select.Option>
-        </Select>
-    </Form.Item>
-    <Form.Item label="TreeSelect">
-        <TreeSelect
-            treeData={[
-                { title: 'Light', value: 'light', children: [{ title: 'Bamboo', value: 'bamboo' }] },
-            ]}
-        />
-    </Form.Item>
-    <Form.Item label="Cascader">
-        <Cascader
-            options={[
-                {
-                    value: 'zhejiang',
-                    label: 'Zhejiang',
-                    children: [{ value: 'hangzhou', label: 'Hangzhou' }],
-                },
-            ]}
-        />
-    </Form.Item>
-    */
-
     return (
         <Form className={styles.uploadForm}>
             <Form.Item label="컨테이너 ID">
@@ -64,13 +33,14 @@ const Upload = () => {
             <Form.Item label="무게제한(kg)">
                 <InputNumber />
             </Form.Item>
-
-            <Form.Item label="출고마감시간">
-                <DatePicker />
+            <Form.Item label="출고마감시간: ">
+                <DatePicker
+                    format="YYYY-MM-DDTHH:mm:ss"
+                    showTime={{defaultValue: dayjs('00:00:00', 'HH:mm:ss'),}}
+                />
             </Form.Item>
-
             <Form.Item label="">
-                <Button>UPLOAD</Button>
+                <Button>컨테이너 등록</Button>
             </Form.Item>
         </Form>
     );

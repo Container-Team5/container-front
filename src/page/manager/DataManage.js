@@ -22,7 +22,7 @@ const onSearch = (value) => {
 };
 const onClick = (value) => {
     console.log(value)
-    window.open("/upload", "a", "width=700, height=400, left=100, top=50"); // 팝업 띄우기
+    window.open("/upload", "a", "width=700, height=500, left=100, top=50"); // 팝업 띄우기
 };
 const contentStyle = {
     textAlign: 'center',
@@ -38,7 +38,9 @@ const siderStyle = {
 };
 
 const DataManage = (props) => {
+    const [currentTab, setCurrentTab] = useState('container') // state 만들어서 컨테이너에만 update 기능 활성화
     const onChange = (key) => {
+        setCurrentTab(key)
         console.log(key);
     };
     const items = [
@@ -46,13 +48,15 @@ const DataManage = (props) => {
         {key: 'pallete', label: `팔레트 관리`, children: <PalleteManage/>,}
     ];
 
-
-
     return (
         <Layout>
             <Sider style={siderStyle}>
                 <Search className="search" placeholder="input search text" onSearch={onSearch} enterButton />
-                <Button className="button" type="primary" onClick={onClick}>UPLOAD</Button>
+                {
+                    currentTab === 'container'
+                        ? <Button className="button" type="primary" onClick={onClick}>UPLOAD</Button>
+                        : null
+                }
             </Sider>
             <Content style={contentStyle}>
                 <Tabs defaultActiveKey="container" items={items} onChange={onChange}/>
@@ -104,8 +108,6 @@ const ContainerManage = (props) => {
 }
 
 const PalleteManage = (props) => {
-
-
 
     const [pallete, setPallete] = useState([
         {id: '1', name:'삼성갤럭시Z플립4', count: '5', width: 32, depth: 10, height: 100, volume:1000, weight: 32000, deadline: '2023-05-03 11:00',},

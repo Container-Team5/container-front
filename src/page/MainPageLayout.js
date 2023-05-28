@@ -4,9 +4,6 @@ import Message from "../component/Message";
 import { Outlet } from "react-router";
 import {useNavigate} from "react-router-dom";
 
-import { Routes, Route} from "react-router-dom";
-import DataManage from "./manager/DataManage";
-
 const {Header} = Layout;
 
 const headerStyle = {
