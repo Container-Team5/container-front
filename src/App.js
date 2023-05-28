@@ -5,7 +5,8 @@ import './App.css';
 import LoginPage from "./page/login/LoginPage"
 import RegisterPage from "./page/login/Register";
 import LoginPage2 from "./page/login/LoginPage2";
-
+import FindAddress from "./page/login/FindAddress";
+import CheckDupId from "./page/login/CheckDupId";
 
 import DataManage from "./page/manager/DataManage";
 import OrderManage from "./page/manager/OrderManage";
@@ -19,7 +20,6 @@ function App() {
             <Routes>
                 <Route path="/account" element={<LoginPage/>}/>
                 <Route path="/account/Login" element={<LoginPage2/>}/>
-
                 <Route path="/account/Register" element={<RegisterPage/>}/>
 
                 <Route exact path="/" element={<MainPageLayout/>}>
@@ -28,6 +28,8 @@ function App() {
                     <Route path="/load-result-manage" element={<LoadResultManage/>}/>
                 </Route>
                 <Route path="/upload" element={<Upload />}/>
+                <Route path="/account/Register/address" element={<FindAddress />}/>
+                <Route path="/account/Register/checkDup" element={<CheckDupId />}/>
             </Routes>
         </BrowserRouter>
     );

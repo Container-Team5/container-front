@@ -13,8 +13,6 @@ import {
 } from 'antd';
 import styles from "../manager/DataManage.css";
 
-type SizeType = Parameters<typeof Form>[0]['size'];
-
 const Upload = () => {
 
     /* FORM 템플릿 코드
