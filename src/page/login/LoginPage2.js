@@ -9,6 +9,7 @@ import LoginPageHeader from "../../component/LoginPageHeader";
 
 
 const LoginPage2 = (props) => {
+    const [loginForm] = Form.useForm()
     const navigate = useNavigate();
 
     const goRegisterPage = () => {
