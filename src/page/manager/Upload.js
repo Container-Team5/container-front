@@ -33,7 +33,7 @@ const Upload = () => {
         }
     }
     return (
-        <Form form={newContainer} className={styles.uploadForm}>
+        <Form className="upload" form={newContainer} >
 
             <Form.Item label="무게(kg)" name="weight" rules={[{required: true}]}>
                 <InputNumber/>
@@ -45,7 +45,7 @@ const Upload = () => {
                 <DatePicker format="YYYY-MM-DDTHH:mm:ss" showTime/>
             </Form.Item>
             <Form.Item>
-                <Button htmlType="submit" onClick={registerContainer}>컨테이너 등록</Button>
+                <Button className="submit" htmlType="submit" onClick={registerContainer}>컨테이너 등록</Button>
             </Form.Item>
         </Form>
     );

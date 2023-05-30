@@ -9,6 +9,12 @@
     width: 100px;
 }
 
-.uploadForm {
-    margin-left : 10px;
+.upload {
+    margin-left : 50px;
+}
+
+.submit {
+    margin-left: 60px;
+    margin-top : 50px;
+
 }

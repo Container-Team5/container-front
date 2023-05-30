@@ -88,8 +88,6 @@ const ContainerManage = forwardRef((props, ref) => {
         }
     }));
 
-
-
     const columns = [
         {title: '컨테이너ID', dataIndex: 'containerId', key: 'containerId',},
         {title: '가로(m)', dataIndex: 'width', key: 'width',},

@@ -14,13 +14,13 @@ const headerStyle = {
 const MainPageLayoutForUser = (props) => {
     const navigate = useNavigate();
     const goMainPageForUser = () => {
-        navigate('./user');
+        navigate('.');
     }
 
     return (
         <Layout style={{height: '100vh'}}>
             <Header style={headerStyle}>
-                <h1 onClick={goMainPageForUser}>Everything of Container</h1>
+                <h1 onClick={goMainPageForUser} style={{cursor:'pointer'}}>Everything of Container</h1>
             </Header>
             <NavigationForUser/>
             <Layout style={{height: '100%', overflow: 'auto'}}>

@@ -7,7 +7,6 @@ const Navigation = (props) => {
     const navigate = useNavigate();
     const items = [
         {key: 'data-manage', label: '적재데이터관리'},
-        {key: 'order-manage', label: '상품주문관리'},
         {key: 'load-result-manage', label: '적재결과관리'},
     ]
     const [current, setCurrent] = useState('mail');
