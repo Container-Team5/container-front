@@ -30,14 +30,14 @@ const SetPallet = (/*{ ButtonA, ButtonB }*/) => {
                         <th>제한 적재량</th>
                     </tr>
                     <tr className='tl' align='middle'>
-                        <td><button id='palletTypeA' type='submit' className='containerButton'>Pallet Type A</button></td>
+                        <td><button id='palletTypeA' className='containerButton'>Pallet Type A</button></td>
                         <td>1.1</td>
                         <td>0.95</td>
                         <td>1.1</td>
                         <td>unknown</td>
                     </tr>
                     <tr className='tl' align='middle'>
-                        <td><button id='palletTypeB' type='submit' className='containerButton'>Pallet Type B</button></td>
+                        <td><button id='palletTypeB' className='containerButton'>Pallet Type B</button></td>
                         <td>1.2</td>
                         <td>0.95</td>
                         <td>1.2</td>

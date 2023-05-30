@@ -210,7 +210,7 @@ function LoadResultManage() {
 
 
     const onClick4 = () => {
-        const newWindow = window.open("/SetPallet", "a", "width=700, height=400, left=100, top=50");
+        const newWindow = window.open("/SetPallet", "_blank", "width=700, height=400, left=100, top=50");
 
         newWindow.onload = () => {
             const buttons = newWindow.document.querySelectorAll("button");
