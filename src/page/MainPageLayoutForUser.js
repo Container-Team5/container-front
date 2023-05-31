@@ -1,26 +1,26 @@
 import {Menu} from "antd";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import  './Navigation.css';
+import  '../component/Navigation.css';
 
 const Navigation = (props) => {
     const navigate = useNavigate();
     const items = [
-        {key: 'data-manage', label: '적재데이터관리'},
-        {key: 'load-result-manage', label: '적재결과관리'},
+        {key: 'goods-register', label: '상품등록'},
+        {key: 'order-delivery', label: '주문/배송'},
     ]
-    const [current, setCurrent] = useState('mail');
+    const [click, setClick] = useState('mail');
     const onClick = (e) => {
         console.log('click ', e);
         navigate(`${e.key}`);
-        setCurrent(e.key);
+        setClick(e.key);
     };
 
     const goRegisterPage = () => {
-        navigate('./account/Register');
+        navigate('../account/Register');
     }
     const goLoginPage = () => {
-        navigate('./account/Login');
+        navigate('../account/Login');
     }
 
     const navStyle = {
@@ -30,7 +30,6 @@ const Navigation = (props) => {
         textStyle: 'bold',
     }
 
-
     return (
         <div>
             <nav style={navStyle}>
@@ -38,7 +37,7 @@ const Navigation = (props) => {
                 <span className="login_menu_tab"> | </span>
                 <span className="signup_menu" onClick={goRegisterPage}> 회원가입 </span>
             </nav>
-            <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items}/>
+            <Menu onClick={onClick} selectedKeys={[click]} mode="horizontal" items={items}/>
         </div>
     )
 }

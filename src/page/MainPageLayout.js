@@ -1,11 +1,7 @@
 import {Layout} from "antd";
 import Navigation from "../component/Navigation";
-import Message from "../component/Message";
 import { Outlet } from "react-router";
 import {useNavigate} from "react-router-dom";
-
-import { Routes, Route} from "react-router-dom";
-import DataManage from "./manager/DataManage";
 
 const {Header} = Layout;
 
@@ -16,19 +12,11 @@ const headerStyle = {
 };
 
 
-// const footerStyle = {
-//     textAlign: 'center',
-//     color: '#000',
-//     backgroundColor: '#bbbbbb',
-// };
-
-
 const MainPageLayout = (props) => {
     const navigate = useNavigate();
     const goMainPage = () => {
         navigate('./');
     }
-
 
     return (
         <Layout style={{height: '100vh'}}>
@@ -39,9 +27,6 @@ const MainPageLayout = (props) => {
             <Layout>
                 <Outlet />
             </Layout>
-            {/*<Footer style={footerStyle}>*/}
-            {/*    <Message/>*/}
-            {/*</Footer>*/}
         </Layout>
     )
 }

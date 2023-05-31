@@ -6,14 +6,15 @@ import LoginPage from "./page/login/LoginPage"
 import RegisterPage from "./page/login/Register";
 import LoginPage2 from "./page/login/LoginPage2";
 import FindAddress from "./page/login/FindAddress";
-import CheckDupId from "./page/login/CheckDupId";
 
 import DataManage from "./page/manager/DataManage";
-import OrderManage from "./page/manager/OrderManage";
 import MainPageLayout from "./page/MainPageLayout";
 import Upload from "./page/manager/Upload";
 import LoadResultManage from "./page/manager/LoadResultManage";
 import SetPallet from "./page/manager/SetPallet";
+import MainPageLayoutForUser from "./page/MainPageLayoutForUser";
+import GoodsRegister from "./page/user/GoodsRegister";
+import OrderDelivery from "./page/user/OrderDelivery";
 
 function App() {
     return (
@@ -25,13 +26,15 @@ function App() {
 
                 <Route exact path="/" element={<MainPageLayout/>}>
                     <Route path="/data-manage" element={<DataManage/>}/>
-                    <Route path="/order-manage" element={<OrderManage/>}/>
                     <Route path="/load-result-manage" element={<LoadResultManage/>}/>
+                </Route>
+                <Route exact path="/user" element={<MainPageLayoutForUser/>}>
+                    <Route path="/user/goods-register" element={<GoodsRegister/>}/>
+                    <Route path="/user/order-delivery" element={<OrderDelivery/>}/>
                 </Route>
                 <Route path="/SetPallet" element={<SetPallet/>}/>
                 <Route path="/upload" element={<Upload />}/>
                 <Route path="/account/Register/address" element={<FindAddress />}/>
-                <Route path="/account/Register/checkDup" element={<CheckDupId />}/>
             </Routes>
         </BrowserRouter>
     );

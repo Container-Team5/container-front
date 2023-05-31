@@ -58,9 +58,18 @@ span {
 .middle_register_button_2 {
     text-align: center;
 }
+
 .idCheck {
     margin-top:15px;
+    margin-right:30px;
     width:170px;
+    background-color : #1677ff;
+    color : white;
+
+}
+.idCheck:hover {
+    background : white;
+    color : white;
 }
 .address_style {
     width:250px;
