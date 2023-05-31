@@ -42,7 +42,7 @@ const Upload = () => {
                 <InputNumber/>
             </Form.Item>
             <Form.Item label="출고마감시간: " name="releaseDate" rules={[{required: true}]}>
-                <DatePicker format="YYYY-MM-DDTHH:mm:ss" showTime/>
+                <DatePicker format="YYYY-MM-DDTHH:mm" showTime/>
             </Form.Item>
             <Form.Item>
                 <Button className="submit" htmlType="submit" onClick={registerContainer}>컨테이너 등록</Button>

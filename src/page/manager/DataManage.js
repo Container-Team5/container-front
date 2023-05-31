@@ -53,13 +53,13 @@ const DataManage = (props) => {
         if(currentTab === 'container')
             containerRef.current.search(value)
         else if(currentTab === 'pallete')
-             paletteRef.current.search(value)
+            paletteRef.current.search(value)
     };
 
     return (
         <Layout>
             <Sider style={siderStyle}>
-                <Search className="search" placeholder="input search text" onSearch={onSearch} enterButton />
+                <Search className="search" placeholder="input text" onSearch={onSearch} enterButton />
                 {
                     currentTab === 'container'
                         ? <Button className="button" type="primary" onClick={onClick}>UPLOAD</Button>
