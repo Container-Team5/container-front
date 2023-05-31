@@ -6,7 +6,6 @@ import LoginPage from "./page/login/LoginPage"
 import RegisterPage from "./page/login/Register";
 import LoginPage2 from "./page/login/LoginPage2";
 import FindAddress from "./page/login/FindAddress";
-import CheckDupId from "./page/login/CheckDupId";
 
 import DataManage from "./page/manager/DataManage";
 import MainPageLayout from "./page/MainPageLayout";
@@ -36,7 +35,6 @@ function App() {
                 <Route path="/SetPallet" element={<SetPallet/>}/>
                 <Route path="/upload" element={<Upload />}/>
                 <Route path="/account/Register/address" element={<FindAddress />}/>
-                <Route path="/account/Register/checkDup" element={<CheckDupId />}/>
             </Routes>
         </BrowserRouter>
     );
