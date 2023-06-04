@@ -20,7 +20,7 @@ const suffix = (
 
 const onClick = (value) => {
     console.log(value)
-    window.open("/upload", "a", "width=500, height=500, left=100, top=50"); // 팝업 띄우기
+    window.open("/upload", "a", "width=500, height=700, left=100, top=50"); // 팝업 띄우기
 };
 const contentStyle = {
     textAlign: 'center',
@@ -129,7 +129,7 @@ const PalleteManage = forwardRef((props, ref) => {
 
     }));
     const columns = [
-        {title: '팔레트ID', dataIndex: 'pid', key: 'pid',},
+        {title: '팔레트ID', dataIndex: 'paletteId', key: 'palleteId',},
         {title: '상품명', dataIndex: 'paletteName', key: 'paletteName',},
         {title: '수량(개)', dataIndex: 'quantity', key: 'quantity',},
         {title: '가로(m)', dataIndex: 'width', key: 'width',},

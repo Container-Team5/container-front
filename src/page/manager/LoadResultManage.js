@@ -27,7 +27,7 @@ const LoadResultManage = () => {
     const [pallets, setPallets] = useState([]);
 
     const [loads, setLoads] = useState([
-        {containerSearch: '1', paletteSearch: '1', paletteInfo: '아이시스 2L 6개묶음, 5, 2023-05-31 22:30, 2023-06-02 14:30', },
+        {containerSearch: '1', paletteSearch: '1', paletteInfo: '아이시스 2L 6개묶음, 20, 2023-05-31 22:30, 2023-06-02 14:30', },
         {containerSearch: '', paletteSearch: '2', paletteInfo: '대림선 야채 김자반볶음 1+1 기획, 500, 2023-05-31 22:30, 2023-06-03 15:30', },
         {containerSearch: '', paletteSearch: '3', paletteInfo: '삼성갤럭시Z플립3, 100, 2023-05-31 22:30 2023-06-03 16:40',},
     ]);

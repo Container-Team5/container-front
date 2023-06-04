@@ -147,7 +147,7 @@ const Register = (props) => {
             let result = (await axios.post("http://localhost:8080/account/signup",signUpRequest));
             if (result.status == 200) {
                 console.log(result);
-                alert('등록되었습니다.');
+                alert('회원가입 되었습니다.');
                 navigate('../account');
             }
         } catch (e) {

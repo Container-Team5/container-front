@@ -44,7 +44,7 @@ const GoodsRegister = (props) => {
                 <InputNumber/>
             </Form.Item>
             <Form.Item label="출고마감시간: " name="dLine" rules={[{required: true}]}>
-                <DatePicker format="YYYY-MM-DDTHH:mm:ss" showTime/>
+                <DatePicker format="YYYY-MM-DDTHH:mm" showTime/>
             </Form.Item>
             <Form.Item label="1차 배송지: " name="firstDel" rules={[{required: true}]}>
                 <Input/>
