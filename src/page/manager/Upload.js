@@ -24,7 +24,10 @@ const Upload = () => {
         }
         if(!canRegister) return
         try {
-            let result = (await axios.post("http://localhost:8080/container",createContainerRequest));
+            let result = (await axios.post("http://localhost:8080/container",createContainerRequest,
+                {
+                    headers: {Authorization: `Bearer ${localStorage.getItem('accessToken')}`,},
+                }));
             if(result.status === 200 ) {
                 alert('등록되었습니다.')
             }

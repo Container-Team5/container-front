@@ -15,6 +15,7 @@ import SetPallet from "./page/manager/SetPallet";
 import MainPageLayoutForUser from "./page/MainPageLayoutForUser";
 import GoodsRegister from "./page/user/GoodsRegister";
 import OrderDelivery from "./page/user/OrderDelivery";
+import Mapping from "./page/manager/Mapping";
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                 </Route>
                 <Route path="/SetPallet" element={<SetPallet/>}/>
                 <Route path="/upload" element={<Upload />}/>
+                <Route path="/mapping" element={<Mapping />}/>
                 <Route path="/account/Register/address" element={<FindAddress />}/>
             </Routes>
         </BrowserRouter>

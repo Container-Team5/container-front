@@ -13,17 +13,23 @@ const GoodsRegister = (props) => {
             let formValue = await newPallete.validateFields()
             createPaletteRequest = {...formValue}
             // dLine을 format에 맞는 문자열로 바꿔줌
-            createPaletteRequest.dLine = formValue.dLine.format().replace('+09:00','')
+            createPaletteRequest.dLine = formValue.dLine.format().replace('+09:00', '')
             canRegister = true
         } catch (e) {
             alert('필수값은 전부 입력해야합니다.')
         }
-        if(!canRegister) return
+        if (!canRegister) return
         try {
-            let result = (await axios.post("http://localhost:8080/palette", createPaletteRequest));
+            let result = (await axios.post("http://localhost:8080/palette",
+                createPaletteRequest,
+                {
+                    headers: {Authorization: `Bearer ${localStorage.getItem('accessToken')}`,},
+                }
+            ));
             if (result.status === 200)
                 alert('등록되었습니다.')
         } catch (e) {
+            console.log(e)
             alert('등록 실패하였습니다.')
         }
     }

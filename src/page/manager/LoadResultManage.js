@@ -1,4 +1,4 @@
-import {Anchor, Layout, Table, Tabs} from "antd";
+import {Anchor, Badge, Dropdown, Layout, Space, Table, Tabs} from "antd";
 import Sider from "antd/es/layout/Sider";
 import {Content} from "antd/es/layout/layout";
 import axios from "axios";
@@ -11,6 +11,7 @@ import './LoadResultManage.css';
 import SetPallet from "./SetPallet";
 import {WebGLRenderList as cubeControls} from "three/src/renderers/webgl/WebGLRenderLists";
 import { TransformControls } from "three/addons/controls/TransformControls";
+import {DownOutlined} from "@ant-design/icons";
 
 
 const LoadResultManage = () => {
@@ -25,21 +26,33 @@ const LoadResultManage = () => {
     const [camera, setCamera] = useState(null);
     const [controls, setControls] = useState(null);
     const [pallets, setPallets] = useState([]);
+    const [tablePallets, setTablePallets] = useState(new Map());
 
-    const [loads, setLoads] = useState([
-        {containerSearch: '1', paletteSearch: '1', paletteInfo: '아이시스 2L 6개묶음, 20, 2023-05-31 22:30, 2023-06-02 14:30', },
-        {containerSearch: '', paletteSearch: '2', paletteInfo: '대림선 야채 김자반볶음 1+1 기획, 500, 2023-05-31 22:30, 2023-06-03 15:30', },
-        {containerSearch: '', paletteSearch: '3', paletteInfo: '삼성갤럭시Z플립3, 100, 2023-05-31 22:30 2023-06-03 16:40',},
+
+    const getContainerData = async ()=>{
+        let result = (await axios.get("http://localhost:8080/container",
+            {
+                headers: {Authorization: `Bearer ${localStorage.getItem('accessToken')}`,},
+            })).data
+        console.log(result)
+        setContainers(result)
+    }
+
+    const [containers, setContainers] = useState([
+        // {containerSearch: '1', paletteSearch: '1', paletteInfo: '아이시스 2L 6개묶음, 20, 2023-05-31 22:30, 2023-06-02 14:30', },
+        // {containerSearch: '', paletteSearch: '2', paletteInfo: '대림선 야채 김자반볶음 1+1 기획, 500, 2023-05-31 22:30, 2023-06-03 15:30', },
+        // {containerSearch: '', paletteSearch: '3', paletteInfo: '삼성갤럭시Z플립3, 100, 2023-05-31 22:30 2023-06-03 16:40',},
     ]);
 
     const columns = [
-        {title: '▼  컨테이너 조회', dataIndex: 'containerSearch', key: 'containerSearch',},
-        {title: '▼  팔레트 조회', dataIndex: 'paletteSearch', key: 'paletteSearch',},
-        {title: '▼  팔레트 실제 정보 (상품명, 주문개수, 주문일자, 출고마감시간)', dataIndex: 'paletteInfo', key: 'paletteInfo',},
+        {title: '▼  컨테이너 ID', dataIndex: 'containerId', key: 'containerId',},
+        // {title: '▼  팔레트 조회', dataIndex: 'paletteSearch', key: 'paletteSearch',},
+        // {title: '▼  팔레트 실제 정보 (상품명, 주문개수, 주문일자, 출고마감시간)', dataIndex: 'paletteInfo', key: 'paletteInfo',},
 
     ];
 
     useEffect(() => {
+        getContainerData()
         const scene = new THREE.Scene();
         setScene(scene);
         scene.background = new THREE.Color(0xFFFFFF);
@@ -317,6 +330,46 @@ const LoadResultManage = () => {
         )
     };
 
+
+    const expandedRowRender =  (record, index) => {
+        const columns = [
+            {
+                title: '팔레트ID',
+                dataIndex: 'paletteId',
+                key: 'paletteId',
+            },
+            {
+                title: '상품명',
+                dataIndex: 'paletteName',
+                key: 'paletteName',
+            },
+            {
+                title: '주문개수',
+                dataIndex: 'quantity',
+                key: 'quantity',
+            },
+            {
+                title: '출고마감시간',
+                dataIndex: 'deadLine',
+                key: 'deadLine',
+            },
+        ];
+
+        return <Table columns={columns} dataSource={tablePallets.get(record.containerId)} pagination={false} />;
+    };
+
+    const onExpand = (expanded, record) =>{
+        axios.get(`http://localhost:8080/palette?containerId=${record.containerId}`,
+            {
+                headers: {Authorization: `Bearer ${localStorage.getItem('accessToken')}`,},
+            })
+            .then(res => {
+                setTablePallets((prev) => new Map(prev).set(record.containerId, res.data));
+                }
+            )
+
+    }
+
     return (
 
         <div style={ { display: 'flex', width: '100%', height: '600px', border: '2px solid blue'} }>
@@ -337,10 +390,18 @@ const LoadResultManage = () => {
                        </span>
                 </div>
                 <div style={{ position: 'absolute', width: '100%', left: '0px', top: '740px', border: '1px solid red'}}>
-
-                        <div>
-                            <Table dataSource={loads} columns={columns} pagination={false}/>
-                        </div>
+                    <Table
+                        columns={columns}
+                        expandable={{
+                            expandedRowRender,
+                            onExpand,
+                            defaultExpandedRowKeys: ['0'],
+                        }}
+                        dataSource={containers}
+                    />
+                        {/*<div>*/}
+                        {/*    <Table dataSource={loads} columns={columns} pagination={false}/>*/}
+                        {/*</div>*/}
 
                 </div>
             </Content>

@@ -40,12 +40,18 @@ const LoginPage2 = (props) => {
 
             try {
                 let result = (await axios.post("http://localhost:8080/account/signin",signInRequest));
-                if(result.status == 200 && authority == '1') {
-                    navigate('../../');
+                if(result.status ===200){
+                    localStorage.setItem("accessToken", result.data.accessToken)
+                    localStorage.setItem("refreshToken", result.data.refreshToken)
+
+                    if(authority == '1') {
+                        navigate('../../');
+                    }
+                    if(authority == '2') {
+                        navigate('../../user');
+                    }
                 }
-                if(result.status == 200 && authority == '2') {
-                    navigate('../../user');
-                }
+
             } catch (e) {
                setMsg('정보를 올바르게 입력해주세요.');
             }
