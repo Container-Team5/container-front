@@ -42,7 +42,6 @@ const GoodsRegister = (props) => {
             <Form.Item label="수량: " name="quantity" rules={[{required: true}]}>
                 <InputNumber/>
             </Form.Item>
-
             <Form.Item label="높이(m): " name="height" rules={[{required: true}]}>
                 <InputNumber/>
             </Form.Item>
