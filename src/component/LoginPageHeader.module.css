@@ -1,0 +1,30 @@
+.h1:hover {
+    cursor : pointer;
+}
+
+.login_menu_tab {
+    margin-left : 25px;
+    margin-right : 25px;
+}
+
+.login_menu:hover {
+    color : black;
+    cursor : pointer;
+}
+
+.login_navigation {
+    margin-right : 30px;
+}
+
+.page_header {
+    height:75px;
+    padding:1rem;
+    color:white;
+    background: #7F7FD5;
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}

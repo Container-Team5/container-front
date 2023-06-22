@@ -1,7 +1,7 @@
-import {Layout} from "antd";
-import Navigation from "../component/Navigation";
+import {Layout, Menu} from "antd";
 import { Outlet } from "react-router";
 import {useNavigate} from "react-router-dom";
+import NavigationForUser from "../component/NavigationForUser";
 
 const {Header} = Layout;
 
@@ -11,23 +11,22 @@ const headerStyle = {
     backgroundColor: '#abcdef',
 };
 
-
-const MainPageLayout = (props) => {
+const MainPageLayoutForUser = (props) => {
     const navigate = useNavigate();
-    const goMainPage = () => {
-        navigate('./');
+    const goMainPageForUser = () => {
+        navigate('.');
     }
 
     return (
         <Layout style={{height: '100vh'}}>
             <Header style={headerStyle}>
-                <h1 onClick={goMainPage} style={{cursor:'pointer'}}>Everything of Container</h1>
+                <h1 onClick={goMainPageForUser} style={{cursor:'pointer'}}>Everything of Container</h1>
             </Header>
-            <Navigation/>
-            <Layout>
+            <NavigationForUser/>
+            <Layout style={{height: '100%', overflow: 'auto'}}>
                 <Outlet />
             </Layout>
         </Layout>
     )
 }
-export default MainPageLayout;
+export default MainPageLayoutForUser;
